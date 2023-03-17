@@ -34,7 +34,7 @@ class DatabaseService {
   getUserGroups() async {
     return userCollection.doc(uid).snapshots();
   }
-
+  
 //create group
   Future createGroup(String userName, String id, String groupName) async {
     DocumentReference groupDocumentReference = await groupCollection.add({

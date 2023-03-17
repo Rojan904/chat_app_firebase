@@ -14,7 +14,7 @@ class AuthService {
       // ignore: unnecessary_null_comparison
       if (user != null) {
         //call database service
-
+        // print(user);
         return true;
       }
     } on FirebaseAuthException catch (e) {
