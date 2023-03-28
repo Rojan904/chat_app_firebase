@@ -41,6 +41,7 @@ dependencies:
   flutter_bloc: ^8.1.2
   equatable: ^2.0.5
   dartz:
+  connectivity_plus: 
 dev_dependencies:
   flutter_test:
     sdk: flutter

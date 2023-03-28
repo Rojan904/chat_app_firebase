@@ -2,7 +2,7 @@ mixin ValidationMixin {
   bool isFieldEmpty(String fieldValue) => fieldValue.isEmpty ? true:false;
 
   bool validateEmailAddress(String email) {
-    if (email == null) {
+    if (email.isEmpty) {
       return false;
     }
 

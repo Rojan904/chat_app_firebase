@@ -1,5 +1,5 @@
 import 'package:chat_app/bloc_switch/auth/login/bloc/login_bloc.dart';
-import 'package:chat_app/pages/auth/register.dart';
+import 'package:chat_app/bloc_switch/auth/register/pages/register_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -47,13 +47,12 @@ class _LoginPageState extends State<LoginPage2> {
         listener: (context, state) {
           if (state is LoginError) {
             showSnackbar(context, Colors.red, state.message);
+          } else if (state is LoggedIn) {
+            nextScreenReplace(context, const HomePage());
           }
         },
         child: BlocBuilder<LoginBloc, LoginState>(
           builder: (context, state) {
-            if (state is LoggedIn) {
-              nextScreenReplace(context, const HomePage());
-            }
             return Stack(
               children: [
                 state is LoginLoading
@@ -132,24 +131,22 @@ class _LoginPageState extends State<LoginPage2> {
                                   prefixIcon: Icon(
                                     Icons.lock,
                                     color: Theme.of(context).primaryColor,
-
                                   ),
                                   suffixIcon: InkWell(
-                                     onTap: () {
-                                      setState(() {
-                                        obscurePassword =
-                                            !obscurePassword;
-                                      },
+                                    onTap: () {
+                                      setState(
+                                        () {
+                                          obscurePassword = !obscurePassword;
+                                        },
                                       );
                                     },
-                                     child: Icon(
+                                    child: Icon(
                                       obscurePassword
                                           ? Icons.visibility_off
                                           : Icons.visibility,
                                       color: Colors.grey,
                                     ),
-                                  )
-                                  ),
+                                  )),
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               onTap: () {
@@ -172,13 +169,11 @@ class _LoginPageState extends State<LoginPage2> {
                                   return null;
                                 }
                               },
-                              
                               onChanged: (val) {
                                 setState(() {
                                   password = val;
                                 });
                               },
-                              
                             ),
                             const SizedBox(
                               height: 20,
@@ -219,7 +214,7 @@ class _LoginPageState extends State<LoginPage2> {
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
                                         nextScreen(
-                                            context, const RegisterPage());
+                                            context, const RegisterPage2());
                                       }),
                               ],
                             )),

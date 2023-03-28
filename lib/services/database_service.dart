@@ -87,7 +87,7 @@ class DatabaseService {
   }
 
   //check if user has joined certain group
-  Future<bool> isUserJoined(String groupId, String groupName, userName) async {
+  Future<bool> isUserJoined(String groupId, String groupName) async {
     DocumentReference documentReference = userCollection.doc(uid);
     DocumentSnapshot documentSnapshot = await documentReference.get();
     List<dynamic> group = await documentSnapshot['groups'];
