@@ -2,6 +2,8 @@ import 'package:chat_app/bloc_switch/auth/login/bloc/login_bloc.dart';
 import 'package:chat_app/bloc_switch/auth/login/bloc/pages/login_page.dart';
 import 'package:chat_app/bloc_switch/auth/register/bloc/register_bloc.dart';
 import 'package:chat_app/bloc_switch/core/network/cubit/internet_cubit.dart';
+import 'package:chat_app/bloc_switch/presentation/chat/bloc/chat_bloc.dart';
+import 'package:chat_app/bloc_switch/presentation/group_info/bloc/group_info_bloc.dart';
 import 'package:chat_app/bloc_switch/presentation/home/bloc/home_bloc.dart';
 import 'package:chat_app/bloc_switch/presentation/home/page/home.dart';
 import 'package:chat_app/bloc_switch/presentation/search/cubit/search_cubit.dart';
@@ -64,6 +66,8 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(create: (_) => ApiBloc()),
         BlocProvider(create: (_) => SearchBloc()),
         BlocProvider(create: (_) => SearchCubit()),
+        BlocProvider(create: (_) => GroupInfoBloc()),
+        BlocProvider(create: (_) => ChatBloc()),
         BlocProvider(create: (_) => InternetCubit(connectivity: connectivity)),
       ],
       child: MaterialApp(

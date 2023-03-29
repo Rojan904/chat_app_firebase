@@ -106,6 +106,7 @@
 //   }
 // }
 
+import 'package:chat_app/bloc_switch/presentation/chat/page/chat_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../helper/helper_function.dart';
@@ -136,7 +137,7 @@ class GroupTileComponent extends StatelessWidget {
                   Future.delayed(const Duration(seconds: 2), () {
                     nextScreen(
                         context,
-                        ChatPage(
+                        ChatPage2(
                             groupId: groupId,
                             groupName: groupName,
                             userName: userName));

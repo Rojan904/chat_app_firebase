@@ -1,3 +1,4 @@
+import 'package:chat_app/bloc_switch/presentation/chat/page/chat_page.dart';
 import 'package:chat_app/pages/chat.dart';
 import 'package:chat_app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class _GroupTileState extends State<GroupTile> {
     return InkWell(
       onTap: () => nextScreen(
           context,
-          ChatPage(
+          ChatPage2(
               groupId: widget.groupId,
               groupName: widget.groupName,
               userName: widget.userName)),
