@@ -1,3 +1,4 @@
+import 'package:chat_app/bloc_switch/auth_bloc/auth_bloc_bloc.dart';
 import 'package:chat_app/services/auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
@@ -11,7 +12,9 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(LoginInitial()) {
+      final AuthBlocBloc authBlocBloc;
+
+  LoginBloc(this.authBlocBloc) : super(LoginInitial()) {
     on<LoginAttemptEvent>((event, emit) async {
       final email = event.email;
       final password = event.password;
@@ -28,6 +31,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           await HelperFunctions.saveUserLoggedInStatus(true);
           await HelperFunctions.saveUserEmailSF(email);
           await HelperFunctions.saveUserNameSF(snapshot.docs[0]['fullName']);
+          authBlocBloc.add(LoggedIns("token"));
           emit(LoggedIn());
         } else {
           emit(LoginError(message: value.toString()));
